@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    node {
+     {
     stage('Checkout git repo') {
       git branch: 'main', url: params.git_repo
     }
