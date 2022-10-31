@@ -9,3 +9,4 @@ pipeline {
         sh(script: "dotnet publish CustomersDemoClean-2017.sln -c Release ", returnStdout: true)
     }
 }
+}
