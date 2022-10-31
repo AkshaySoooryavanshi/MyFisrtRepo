@@ -1,21 +1,11 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+    node {
+    stage('Checkout git repo') {
+      git branch: 'main', url: params.git_repo
+    }
+    stage('build and publish') {
+        sh(script: "dotnet publish CustomersDemoClean-2017.sln -c Release ", returnStdout: true)
     }
 }
